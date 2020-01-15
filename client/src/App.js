@@ -5,6 +5,10 @@ import "./App.css";
 function App() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
+  const [values, setValues] = useState({
+    title: "",
+    contents: ""
+  });
 
   useEffect(() => {
     const getPosts = () => {
@@ -17,12 +21,13 @@ function App() {
     };
     getPosts();
   }, []);
-  const addPost = (title, contents) => {
-    const values = {
-      title: title,
-      contents: contents
-    };
-    axios.post("http://ctfjmg01:4000/api/posts", values);
+  const addPost = () => {
+    console.log(values);
+    axios.post("http://ctfjmg01:4000/api/posts", values).then(res => {
+      axios.get("http://ctfjmg01:4000/api/posts").then(res => {
+        setPosts(res.data);
+      });
+    });
   };
   const deletepost = id => {
     axios.delete(`http://ctfjmg01:4000/api/posts/${id}`).then(res => {
@@ -31,7 +36,13 @@ function App() {
       });
     });
   };
-  const handleChange = () => {};
+  const onChange = e => {
+    const chng = e.target.value;
+    setValues({
+      ...values,
+      [e.target.name]: chng
+    });
+  };
   return (
     <div className="App">
       <h1>Add Post:</h1>
@@ -39,16 +50,18 @@ function App() {
         <p> Title: </p>
         <input
           type="text"
-          id="posttitle"
-          name="posttitle"
-          onChange={() => handleChange()}
+          id="title"
+          name="title"
+          value={values.title}
+          onChange={onChange}
         ></input>
         <p> Contents: </p>
         <input
           type="text"
-          id="postcontents"
-          name="postcontents"
-          onChange={() => handleChange()}
+          id="contents"
+          name="contents"
+          value={values.contents}
+          onChange={onChange}
         ></input>
         <button onClick={() => addPost()}> Add </button>
       </div>
