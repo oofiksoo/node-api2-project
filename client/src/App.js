@@ -15,7 +15,7 @@ function App() {
   }, []);
   const addPost = (title, contents) => {
     const values = {
-      titile: title,
+      title: title,
       contents: contents
     };
     axios.post("http://ctfjmg01:4000/api/posts", values);
