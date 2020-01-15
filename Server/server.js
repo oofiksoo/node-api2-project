@@ -3,5 +3,5 @@ const Router = require("../Router/router.js");
 const server = express();
 server.use(express.json());
 
-server.use("../Router/Router.js", Router);
+server.use("/api/posts", Router);
 module.exports = server;
