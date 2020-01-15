@@ -48,7 +48,7 @@ function App() {
         ></input>
         <button onClick={() => addPost()}> Add </button>
       </div>
-      <h1> Posts: </h1>
+      <h1> Current Posts: </h1>
       <div className="postBox">
         {posts.map(post => (
           <div className="postCard" key={post.id}>

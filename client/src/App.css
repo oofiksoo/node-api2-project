@@ -7,12 +7,6 @@
     pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
 .App-header {
     background-color: #282c34;
     min-height: 100vh;
@@ -28,12 +22,22 @@
     color: #61dafb;
 }
 
+h1 {
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 3rem;
+    width: 80%;
+    margin: 1rem auto;
+}
+
 .addPost {
     display: flex;
     border: 2px solid black;
     border-radius: 10px;
     margin: 2rem;
     padding: 2rem;
+    box-shadow: 3px 3px 3px grey;
 }
 
 .addPost input {
@@ -46,6 +50,16 @@
     align-self: center;
     width: 30%;
     margin: 1rem;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.addPost button:hover {
+    color: black;
+    background-color: white;
 }
 
 .postBox {
@@ -60,10 +74,24 @@
     margin: 2rem;
     padding: 2rem;
     width: 350px;
-    height: 250px;
+    height: 150px;
+    box-shadow: 3px 3px 3px grey;
 }
 
 .postCard p {
     word-wrap: normal;
-    font-size: 0.55rem;
+    font-size: 0.7rem;
+}
+
+.postCard button {
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.postCard button:hover {
+    color: black;
+    background-color: white;
 }
