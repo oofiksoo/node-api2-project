@@ -4,11 +4,15 @@ import "./App.css";
 
 function App() {
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const getPosts = () => {
       axios.get("http://ctfjmg01:4000/api/posts").then(res => {
         setPosts(res.data);
+        //axios.get(`http://ctfjmg01:4000/api/posts/${id}/comments`).then(res => {
+        //  setComments(res.data);
+        // });
       });
     };
     getPosts();
@@ -53,6 +57,12 @@ function App() {
         {posts.map(post => (
           <div className="postCard" key={post.id}>
             <h3> {post.title} </h3> <p> {post.contents} </p>
+            {comments.map(comment => (
+              <div className="commentCard">
+                <h3>Comment:</h3>
+                <p>{comment.text}</p>
+              </div>
+            ))}
             <button onClick={() => deletepost(post.id)}>Delete</button>
           </div>
         ))}
