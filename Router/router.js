@@ -39,7 +39,7 @@ router.post("/:id/comments", (req, res) => {
         db.insertComment(data)
 
         .then(comment => {
-            if (comment) {
+            if (!comment) {
                 res.status(201).json(comment);
             } else {
                 res.status(404).json({
@@ -49,7 +49,7 @@ router.post("/:id/comments", (req, res) => {
         })
 
         .catch(error => {
-            console.timeLog("error on POST /api/posts/:id/comments", error);
+            console.Log("error on POST /api/posts/:id/comments", error);
 
             res.status(500).json({
                 errorMessage: "There was an error while saving the comment to the database"
